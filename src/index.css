@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: #ffffff; 
+  --text-color: #000000;  
+  --border-color-light: #334155; 
+  --border-color-dark: #e2e8f0; 
+  --radius: 8px;  
+  --radius1:50% ;  
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark {
+  --dark-bg-color-1: #000001; 
+  --dark-bg-color-2: #2f3b59; 
+  --background-color: var(--dark-bg-color-1);
+  --border-color: var(--border-color-dark);
+  --text-color: #ffffff;
+}
+
+
