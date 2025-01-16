@@ -29,6 +29,7 @@ const Header = () => {
     const changeLanguage = (lang: string) => {
       i18n.changeLanguage(lang); 
       setLanguageDropdown(false);
+      navigate(`/${lang}`);
     };
   
 
@@ -86,7 +87,7 @@ const Header = () => {
                 English
               </button>
               <button
-                onClick={() => changeLanguage("geo")}
+                onClick={() => changeLanguage("ka")}
                 className="block w-full px-4 py-2 text-left hover:bg-gray-100"
               >
                 ქართული

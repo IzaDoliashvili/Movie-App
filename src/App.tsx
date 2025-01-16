@@ -8,6 +8,7 @@ import { useSetAtom } from "jotai";
 import router from "./routes"; 
 import DashboardLayout from "./layouts";
 import "../src/index.css"; 
+import "./i18n";
 import { userAtom } from "./store/auth";
 import { supabase } from "./supabase";
 import { ThemeProvider } from "./components/ui/components/theme-provider"

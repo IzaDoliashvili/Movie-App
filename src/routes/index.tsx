@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home";
 import ExplorePage from "../pages/explore";
 import DetailsPage from "../pages/detail";
@@ -11,7 +11,12 @@ import ProfilePage from "../pages/account/userProfile";
 
 const router = createBrowserRouter([
     {
-        path : "/",
+        path: "/",
+        element: <Navigate to="/en" replace />, 
+    },
+    
+    {
+        path : "/:lang",
         element : <DashboardLayout />,
         children : [
             {

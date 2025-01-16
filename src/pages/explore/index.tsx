@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Card from '../../components/card'
 
@@ -59,7 +59,7 @@ const ExplorePage = () => {
 
             <div className='grid grid-cols-[repeat(auto-fit,230px)] gap-6 justify-center lg:justify-start'>
               {
-                data.map((exploreData,index)=>{
+                data.map((exploreData)=>{
                   return(
                     <Card data={exploreData} key={exploreData.id + "exploreSEction"} media_type={params.explore} trending={undefined} index={undefined}/>
                   )

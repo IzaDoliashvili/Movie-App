@@ -1,6 +1,6 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Card from '../../components/card'
 
 const SearchPage = () => {
@@ -8,6 +8,7 @@ const SearchPage = () => {
   const [data,setData] = useState([])
   const [page,setPage] = useState(1)
   const navigate = useNavigate()
+  const { lang } = useParams();
 
   const query = location?.search?.slice(3)
 
@@ -62,7 +63,7 @@ const SearchPage = () => {
             <input 
               type='text'
               placeholder='Search here...'
-              onChange={(e)=> navigate(`/search?q=${e.target.value}`)}
+              onChange={(e)=> navigate(`/${lang}/search?q=${e.target.value}`)}
               value={query?.split("%20")?.join(" ")}
               className='px-4 py-1 text-lg w-full bg-white rounded-md  '
             />
