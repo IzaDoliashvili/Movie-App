@@ -1,16 +1,41 @@
-import React, { useRef } from 'react'
+import  { useRef } from 'react'
 import Card from '../card'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
-const HorizontalScollCard = ({data = [], heading, trending, media_type}) => {
-    const contaierRef = useRef()
+type HorizontalScrollCardProps = {
+data: Array<{
+    id: number;
+    title?: string;
+    name?: string;
+    poster_path?: string;
+    release_date?: string;
+    vote_average?: number;
+    media_type?: string;
+  }>;
+  heading: string;
+  trending?: boolean;
+  media_type?: string;
+};
 
-    const handleNext = ()=>{
-        contaierRef.current.scrollLeft += 300
-    }
-    const handlePrevious = ()=>{
-        contaierRef.current.scrollLeft -= 300
-    }
+  const HorizontalScollCard = ({
+    data = [],
+    heading,
+    trending,
+    media_type,
+  }: HorizontalScrollCardProps) => {
+    const contaierRef = useRef<HTMLDivElement>(null);
+
+    const handleNext = () => {
+        if (contaierRef.current) {
+          contaierRef.current.scrollLeft += 300;
+        }
+      };
+    
+      const handlePrevious = () => {
+        if (contaierRef.current) {
+          contaierRef.current.scrollLeft -= 300;
+        }
+      };
   return (
     <div className='container mx-auto px-3 my-10'>
           <h2 className='text-xl lg:text-2xl font-bold mb-3  capitalize'>{heading}</h2>

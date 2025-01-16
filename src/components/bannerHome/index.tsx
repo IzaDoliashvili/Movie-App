@@ -1,11 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import  {useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
+type MovieoData = {
+    bannerData: {
+      id: number;
+      title?: string;
+      name?: string;
+      backdrop_path: string;
+      overview: string;
+      vote_average: number;
+      popularity: number;
+      media_type: string;
+    }[];
+    imageURL: string;
+  };
+  
+  type RootState = {
+    movieoData: MovieoData;
+  };
+  
+
 const BannerHome = () => {
-    const bannerData = useSelector(state => state.movieoData.bannerData)
-    const imageURL = useSelector(state => state.movieoData.imageURL)
+    const bannerData = useSelector((state: RootState) => state.movieoData.bannerData);
+   const imageURL = useSelector((state: RootState) => state.movieoData.imageURL);
     const [currentImage,setCurrentImage] = useState(0)
 
     const handleNext = ()=>{
@@ -35,7 +54,7 @@ const BannerHome = () => {
     <section className='w-full h-full'>
         <div className='flex min-h-full max-h-[85vh] overflow-hidden'>
             {
-                bannerData.map((data,index)=>{
+                bannerData.map((data: MovieoData["bannerData"][number], index: number)=>{
                     return(
                         <div key={data.id+"bannerHome"+index} className='min-w-full max-h-[450px] lg:min-h-full overflow-hidden relative group transition-all' style={{ transform : `translateX(-${currentImage * 100}%)`}}>
                                 <div className='w-full h-full'>

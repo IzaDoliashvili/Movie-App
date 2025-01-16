@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 export type UserProfile = {
   username: string;
-  full_name_ka: string;
-  full_name_en: string;
 };
 
 const ProfilePage = () => {
@@ -56,12 +54,7 @@ const ProfilePage = () => {
             <p>
               <strong>{t("Username")}: </strong> {profile.username}
             </p>
-            <p>
-              <strong>{t("Full Name (EN)")}: </strong> {profile.full_name_en}
-            </p>
-            <p>
-              <strong>{t("Full Name (KA)")}: </strong> {profile.full_name_ka}
-            </p>
+           
             <button
               className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
               onClick={() => navigate("/user/profile/edit")}

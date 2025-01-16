@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux'
 import HorizontalScollCard from '../../components/horisontalScrolCard'
 import useFetch from '../../hooks/useFetch'
 import { useTranslation } from "react-i18next";
+import { RootState } from '../../store/movieSlice';
 
 
 const Home = () => {
   const { t } = useTranslation();
-  const trendingData = useSelector(state => state.movieoData.bannerData)
+  const trendingData = useSelector((state: RootState)  => state.movieoData.bannerData)
   const { data : nowPlayingData } = useFetch('/movie/now_playing')
   const { data : topRatedData } = useFetch('/movie/top_rated')
   const { data : popularTvShowData } = useFetch('/tv/popular')

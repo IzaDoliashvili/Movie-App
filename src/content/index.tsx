@@ -6,9 +6,6 @@ import { IoSearchOutline } from "react-icons/io5";
 
 
 
-// const { t } = useTranslation();
-
-
 export const navigation = [
     {
         label : "TV Shows",

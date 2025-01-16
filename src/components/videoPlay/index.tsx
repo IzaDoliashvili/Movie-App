@@ -1,8 +1,18 @@
-import React from 'react'
+
+
 import { IoClose } from "react-icons/io5";
 import useFetchDetails from '../../hooks/useFetchDetails';
 
-const VideoPlay = ({data, close,media_type}) => {
+type VideoPlayProps = {
+  data: {
+    id: number; 
+    [key: string]: any;
+  };
+  close: () => void; 
+  media_type: string; 
+};
+
+const VideoPlay = ({ data, close, media_type }: VideoPlayProps) => {
   const { data : videoData } = useFetchDetails(`/${media_type}/${data?.id}/videos`)
 
   return (
