@@ -1,14 +1,14 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Card from '../../components/card'
+import { ROUTE_PATHS } from '../../routes/index.enum'
 
 const SearchPage = () => {
   const location = useLocation()
   const [data,setData] = useState([])
   const [page,setPage] = useState(1)
   const navigate = useNavigate()
-  const { lang } = useParams();
 
   const query = location?.search?.slice(3)
 
@@ -55,7 +55,8 @@ const SearchPage = () => {
   useEffect(()=>{
     window.addEventListener('scroll',handleScroll)
 },[])
-
+ 
+ 
   return (
     <div className='py-16'>
 
@@ -63,7 +64,7 @@ const SearchPage = () => {
             <input 
               type='text'
               placeholder='Search here...'
-              onChange={(e)=> navigate(`/${lang}/search?q=${e.target.value}`)}
+              onChange={(e)=> navigate(`${ROUTE_PATHS.SEARCH_PAGE}?q=${e.target.value}`)}
               value={query?.split("%20")?.join(" ")}
               className='px-4 py-1 text-lg w-full bg-white rounded-md  '
             />

@@ -49,7 +49,7 @@ const Header = () => {
                                     <NavLink 
                                         to={nav.href} 
                                         className={({ isActive }) => `px-2 hover:text-white  text-red-500 font-bold ${isActive && ""}`}>
-                                        {nav.label}
+                                        {t(nav.label)}
                                     </NavLink>
                                 </div>
                             )

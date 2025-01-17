@@ -5,6 +5,8 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { ROUTE_PATHS } from "../../../routes/index.enum";
+import { Button } from "../../../components/ui/button";
 
 export type UserProfile = {
   username: string;
@@ -54,19 +56,22 @@ const ProfilePage = () => {
             <p>
               <strong>{t("Username")}: </strong> {profile.username}
             </p>
-           
-            <button
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
-              onClick={() => navigate("/user/profile/edit")}
-            >
+            <Button
+              type="submit"
+              variant="destructive"
+              size="default"
+              onClick={() => navigate(ROUTE_PATHS.USERS_PROFILE_EDIT)}
+             >
               {t("Edit Profile")}
-            </button>
-            <button
-              className="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300"
+            </Button>
+            
+            <Button
+              type="submit"
+              variant="default"
               onClick={handleLogout}
             >
               {t("Logout")}
-            </button>
+            </Button>
           </div>
         ) : (
           <p>{t("Loading profile information...")}</p>

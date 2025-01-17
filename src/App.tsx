@@ -6,7 +6,6 @@ import { RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useSetAtom } from "jotai";
 import router from "./routes"; 
-import DashboardLayout from "./layouts";
 import "../src/index.css"; 
 import "./i18n";
 import { userAtom } from "./store/auth";
@@ -57,9 +56,7 @@ const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}>
-        <DashboardLayout />
-      </RouterProvider>
+      <RouterProvider router={router} />
     </QueryClientProvider>
     </ThemeProvider>
   );

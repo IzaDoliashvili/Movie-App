@@ -1,7 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import { mobileNavigation } from '../../content'
 import { NavLink } from 'react-router-dom'
 
+
 const MobileNavigation = () => {
+
+    
+const { t } = useTranslation();
   return (
     <section className='lg:hidden h-14  bg-opacity-70 backdrop-blur-2xl fixed bottom-0 w-full z-40'>
         <div className='flex items-center justify-evenly h-full '>
@@ -16,7 +21,7 @@ const MobileNavigation = () => {
                             <div className='text-2xl text-red-500'>
                                 {nav.icon}
                             </div>
-                            <p className='text-sm'>{nav.label}</p>
+                            <p className='text-sm'>{t(nav.label)}</p>
                         </NavLink>
                     )
                 })

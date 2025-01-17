@@ -1,14 +1,14 @@
 import React from "react";
 import { Input } from "../../../components/ui/input"
-import { Button, buttonVariants } from "../../../components/ui/button";
-import { cn } from "../../../lib/utils";
+import { Button } from "../../../components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation} from "@tanstack/react-query";
 import { login } from "../../../supabase/auth";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ROUTE_PATHS } from "../../../routes/index.enum";
 
-export const LogIn: React.FC = () => {
+ const LogIn: React.FC = () => {
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ export const LogIn: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-    <div className="border p-6 rounded-lg shadow-md w-full max-w-sm">
+    <div className="border p-6 rounded-lg shadow-md w-full max-w-md">
       <h2 className="text-2xl font-bold mb-4 text-center">{t("Log in to Movie App")}</h2>
       <p className="text-sm text-gray-600 mb-6 text-center">
         {t("Enter your credentials to access your account")}
@@ -66,18 +66,19 @@ export const LogIn: React.FC = () => {
           {errors.password && <p className="text-red-500">{errors.password.message}</p>}
         </div>
         <Button
-          type="submit"
-          className={cn(buttonVariants({ variant: "link", size: "lg" }), "w-full bg-red-500 text-white")}
-        >
-          {t("Log In")}
-        </Button>
+            type="submit"
+            variant="destructive"
+             size="default"
+          >
+           {t("Log In")}
+          </Button>
       </form>
       <div className="flex justify-between mt-4 text-sm">
         <Link to="/forgot-password" className="text-red-400 hover:underline">
           {t("Forgot password?")}
         </Link>
         <span>{t("Don't have an account?")}</span>
-        <Link to="/auth/Register" className="text-red-400 hover:underline">
+        <Link to={ROUTE_PATHS.AUTH_REGISTER} className="text-red-400 hover:underline">
           {t("Sign up")}
         </Link>
       </div>
@@ -85,3 +86,4 @@ export const LogIn: React.FC = () => {
   </div>
   );
 };
+export default LogIn

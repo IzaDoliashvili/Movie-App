@@ -1,3 +1,5 @@
+import { Button } from "../../../components/ui/button";
+import { ROUTE_PATHS } from "../../../routes/index.enum";
 import { userAtom } from "../../../store/auth";
 import { fillProfileInfo, getProfileInfo } from "../../../supabase/account";
 import { FillProfileInfoPayload } from "@/supabase/account/index.type";
@@ -22,19 +24,7 @@ const EditProfilePage = () => {
       }
     }, [user, setValue]);
 
-    // useEffect(() => {
-    //     if (user) {
-    //       getProfileInfo(user.user.id).then((profile) => {
-    //         if (profile) {
-    //           setValue("username", profile.username);
-    //           setValue("full_name_en", profile.full_name_en);
-    //           setValue("full_name_ka", profile.full_name_ka);
-    //         }
-    //       }).catch((error) => {
-    //         console.error("Failed to load profile:", error);
-    //       });
-    //     }
-    //   }, [user, setValue]);
+
 
     const { mutate: handleFillProfileInfo } = useMutation({
       mutationKey: ["fill-profile-info"],
@@ -86,14 +76,17 @@ const EditProfilePage = () => {
             />
             {errors.full_name_ka && <p className="text-red-800 text-sm mt-1">{errors.full_name_ka.message}</p>}
           </div>
-
-          <button
+          <Button
             type="submit"
-            onClick={() => navigate("/user/profile")}
-            className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
+            variant="destructive"
+            size="default"
+            onClick={() => navigate(ROUTE_PATHS.USERS_PROFILE)}
+           
           >
             {t("Save Changes")}
-          </button>
+          </Button>
+
+         
         </form>
       </div>
     </div>
