@@ -56,26 +56,6 @@ const EditProfilePage = () => {
             />
             {errors.username && <p className="text-red-800 text-sm mt-1">{errors.username.message}</p>}
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-500">{t("Full Name (EN)")}</label>
-            <input
-              {...register("email", { required: t("Full Name (EN) is required") })}
-              className="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              placeholder={t("Enter your full name (English)")}
-            />
-            {errors.full_name_en && <p className="text-red-800 text-sm mt-1">{errors.full_name_en.message}</p>}
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-500">{t("Full Name (KA)")}</label>
-            <input
-              {...register("full_name_ka", { required: t("Full Name (KA) is required") })}
-              className="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              placeholder={t("Enter your full name (Georgian)")}
-            />
-            {errors.full_name_ka && <p className="text-red-800 text-sm mt-1">{errors.full_name_ka.message}</p>}
-          </div>
           <Button
             type="submit"
             variant="destructive"

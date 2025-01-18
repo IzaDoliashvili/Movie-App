@@ -29,7 +29,7 @@ import { ROUTE_PATHS } from "../../../routes/index.enum";
   
   const { mutate: handleRegister } = useMutation({
     mutationKey: ["register"],
-    mutationFn: async (data: { email: string; password: string; username: string; }) => {
+    mutationFn: async (data: { email: string; password: string;  }) => {
       return register(data); 
     },
     onSuccess: () => {
@@ -50,7 +50,6 @@ import { ROUTE_PATHS } from "../../../routes/index.enum";
     handleRegister({
       email: data.email,
       password: data.password,
-      username:data.username,
       
   });
 }

@@ -1,6 +1,6 @@
 import { ROUTE_PATHS } from "../index.enum";
 import { lazy, Suspense } from "react";
-import { Route, RouteObject } from "react-router";
+import {  RouteObject } from "react-router";
 
 const EditProfilePage = lazy(
     () => import("../../pages/account/profile"),

@@ -7,10 +7,9 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_PATHS } from "../../../routes/index.enum";
 import { Button } from "../../../components/ui/button";
+import { UserProfile } from "../../../types";
 
-export type UserProfile = {
-  username: string;
-};
+
 
 const ProfilePage = () => {
   const user = useAtomValue(userAtom);
@@ -22,10 +21,47 @@ const ProfilePage = () => {
   useEffect(() => {
     if (user) {
       getProfileInfo(user.user.id)
-        .then((data) => setProfile(data))
+        .then((profileData) => {
+          if (profileData) {
+            setProfile(profileData);
+          } else {
+            console.warn("No profile data found.");
+          }
+        })
         .catch((error) => console.error("Failed to fetch profile:", error));
     }
   }, [user]);
+  
+
+  // useEffect(() => {
+  //   if (user) {
+  //     getProfileInfo(user.user.id)
+  //       .then((user) => setProfile(user))
+  //       .catch((error) => console.error("Failed to fetch profile:", error));
+  //   }
+  // }, [user]);
+
+  // useEffect(() => {
+  //   if (user) {
+      
+  //     getProfileInfo(user.user.id)
+  //       .then((response) => {
+  //         if (response.error) {
+  //           console.error("Failed to fetch profile:", response.error);
+  //         } else {
+  //           setProfile(response.data as UserProfile | null); 
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.error("An unexpected error occurred:", error);
+  //       });
+  //   }
+  // }, [user]);
+
+
+ 
+  
+  
 
   const handleLogout = async () => {
     try {

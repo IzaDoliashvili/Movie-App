@@ -5,14 +5,17 @@ import HorizontalScollCard from '../../components/horisontalScrolCard'
 import useFetch from '../../hooks/useFetch'
 import { useTranslation } from "react-i18next";
 import { RootState } from '../../store/movieSlice';
+import { MediaItem } from '../..//types';
+
+
 
 
 const Home = () => {
   const { t } = useTranslation();
   const trendingData = useSelector((state: RootState)  => state.movieoData.bannerData)
-  const { data : nowPlayingData } = useFetch('/movie/now_playing')
-  const { data : topRatedData } = useFetch('/movie/top_rated')
-  const { data : popularTvShowData } = useFetch('/tv/popular')
+  const { data : nowPlayingData } = useFetch<MediaItem>('/movie/now_playing')
+  const { data : topRatedData } = useFetch<MediaItem>('/movie/top_rated')
+  const { data : popularTvShowData } = useFetch<MediaItem>('/tv/popular')
   
   return (
     <div>

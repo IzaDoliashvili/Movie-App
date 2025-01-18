@@ -1,21 +1,9 @@
 import  { useRef } from 'react'
 import Card from '../card'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import { HorizontalScrollCardProps } from '../../types';
 
-type HorizontalScrollCardProps = {
-data: Array<{
-    id: number;
-    title?: string;
-    name?: string;
-    poster_path?: string;
-    release_date?: string;
-    vote_average?: number;
-    media_type?: string;
-  }>;
-  heading: string;
-  trending?: boolean;
-  media_type?: string;
-};
+
 
   const HorizontalScollCard = ({
     data = [],

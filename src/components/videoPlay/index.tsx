@@ -1,19 +1,13 @@
-
-
 import { IoClose } from "react-icons/io5";
 import useFetchDetails from '../../hooks/useFetchDetails';
+import { VideoData, VideoPlayProps } from "../../types";
 
-type VideoPlayProps = {
-  data: {
-    id: number; 
-    [key: string]: any;
-  };
-  close: () => void; 
-  media_type: string; 
-};
 
-const VideoPlay = ({ data, close, media_type }: VideoPlayProps) => {
-  const { data : videoData } = useFetchDetails(`/${media_type}/${data?.id}/videos`)
+
+const VideoPlay = ({ data, close, media_type,}: VideoPlayProps) => {
+  const { data: videoData } = useFetchDetails<VideoData>(`/${media_type}/${data?.id}/videos`);
+  const videoKey = videoData?.results?.[0]?.key;
+  const videoSrc = videoKey ? `https://www.youtube.com/embed/${videoKey}` : "";
 
   return (
     <section className='fixed bg-neutral-700 top-0 right-0 bottom-0 left-0 z-40 bg-opacity-50 flex justify-center items-center'> 
@@ -24,9 +18,12 @@ const VideoPlay = ({ data, close, media_type }: VideoPlayProps) => {
           </button>
 
           <iframe
-            src={`https://www.youtube.com/embed/${videoData?.results[0]?.key}`}
-            className='w-full h-full'
-          />
+          src={videoSrc}
+          title="Video Player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full"
+        />
 
 
 

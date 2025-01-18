@@ -8,38 +8,8 @@ import Divider from '../../components/divider'
 import HorizontalScollCard from '../../components/horisontalScrolCard'
 import VideoPlay from '../../components/videoPlay'
 import { RootState } from '../../store/movieSlice'
+import { CastData, CastMember, CrewMember, MovieDetails } from '../../types'
 
-interface MovieDetails {
-  id: number;
-  title?: string;
-  name?: string;
-  backdrop_path?: string;
-  poster_path?: string;
-  tagline?: string;
-  vote_average?: number;
-  vote_count?: number;
-  overview?: string;
-  status?: string;
-  release_date?: string;
-  revenue?: number;
-  runtime?: number;
-}
-
-interface CastMember {
-  name: string;
-  profile_path?: string;
-}
-
-interface CrewMember {
-  name: string;
-  job: string;
-  profile_path?: string;
-}
-
-interface CastData {
-  cast: CastMember[];
-  crew: CrewMember[];
-}
 
 const DetailsPage = () => {
   const params = useParams();
@@ -83,7 +53,7 @@ const DetailsPage = () => {
                           src={imageURL+data?.poster_path}
                           className='h-80 w-60 object-cover rounded'
                       /> 
-                      <button onClick={()=>handlePlayVideo(data)} className='mt-3 w-full py-2 px-4 text-center bg-red-500 rounded font-bold text-lg hover:bg-gradient-to-l from-red-500 to-orange-500 hover:scale-105 transition-all'>Play Now</button>
+                      <button onClick={() => data?.id && handlePlayVideo(String(data.id))}  className='mt-3 w-full py-2 px-4 text-center bg-red-500 rounded font-bold text-lg hover:bg-gradient-to-l from-red-500 to-orange-500 hover:scale-105 transition-all'>Play Now</button>
                   </div>
     
                   <div>
@@ -183,7 +153,7 @@ const DetailsPage = () => {
     
               <div>
                 
-                  <HorizontalScollCard data={recommendationData} heading={"Recommendation " + params?.explore} media_type={params?.explore} trending={undefined}/>
+                  <HorizontalScollCard data={recommendationData?.flat() || []}  heading={"Recommendation " + params?.explore} media_type={params?.explore} trending={undefined}/>
               </div>
     
               {

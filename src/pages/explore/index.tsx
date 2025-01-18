@@ -2,11 +2,12 @@ import axios from 'axios'
 import  { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Card from '../../components/card'
+import { ExploreData } from '../../types'
 
 const ExplorePage = () => {
   const params = useParams()
   const [pageNo,setPageNo] = useState(1)
-  const [data,setData] = useState([])
+  const [data,setData] = useState<ExploreData[]>([])
   const [totalPageNo,setTotalPageNo] = useState(0)
 
   console.log("params",params.explore)
@@ -31,7 +32,8 @@ const ExplorePage = () => {
   }
 
   const handleScroll = ()=>{
-    if((window.innerHeight + window.scrollY ) >= document.body.offsetHeight){
+    if((window.innerHeight + window.scrollY ) >= document.body.offsetHeight &&
+    pageNo < totalPageNo){
       setPageNo(preve => preve + 1)
     }
   }

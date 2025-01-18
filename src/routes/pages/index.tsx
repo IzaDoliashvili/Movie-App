@@ -3,9 +3,6 @@ import { ROUTE_PATHS } from "../index.enum";
 import { lazy, Suspense } from "react";
 import {  RouteObject } from "react-router";
 
-const Home = lazy(
-  () => import("../../pages/home"),
-);
 
 const SearchPage = lazy(
     () => import("../../pages/search"),

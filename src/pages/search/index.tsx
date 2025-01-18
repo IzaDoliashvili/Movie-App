@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Card from '../../components/card'
 import { ROUTE_PATHS } from '../../routes/index.enum'
+import { SearchData } from '../../types'
 
 const SearchPage = () => {
   const location = useLocation()
-  const [data,setData] = useState([])
+  const [data,setData] = useState<SearchData[]>([])
   const [page,setPage] = useState(1)
   const navigate = useNavigate()
 
@@ -20,12 +21,7 @@ const SearchPage = () => {
             page : page
           }
         })
-        setData((preve)=>{
-          return[
-              ...preve,
-              ...response.data.results
-          ]
-        })
+        setData((prev) => [...prev, ...response.data.results]);
     } catch (error) {
         console.log('error',error)
     }

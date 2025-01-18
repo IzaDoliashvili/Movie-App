@@ -2,21 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import { CardProps } from '../../types'
 
-interface CardProps {
-    data: {
-      id: number;
-      title?: string;
-      name?: string;
-      poster_path?: string;
-      release_date?: string;
-      vote_average?: number;
-      media_type?: string;
-    };
-    trending?: boolean; 
-    index?: number; 
-    media_type?: string; 
-  }
+
 
   const Card: React.FC<CardProps>= ({data,trending,index,media_type }) => {
     const imageURL = useSelector((state: any) => state.movieoData.imageURL);
