@@ -78,7 +78,7 @@ import { ROUTE_PATHS } from "../../../routes/index.enum";
           {t("Forgot password?")}
         </Link>
         <span>{t("Don't have an account?")}</span>
-        <Link to={ROUTE_PATHS.AUTH_REGISTER} className="text-red-400 hover:underline">
+        <Link to={ "/"+ROUTE_PATHS.AUTH_REGISTER} className="text-red-400 hover:underline">
           {t("Sign up")}
         </Link>
       </div>

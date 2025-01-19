@@ -100,4 +100,9 @@ export interface CardProps {
     index?: number; 
     media_type?: string; 
   }
+
+export type ProfileFormInputs = {
+    username: string;
+  };
+  
   

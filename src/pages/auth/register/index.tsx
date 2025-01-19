@@ -135,7 +135,7 @@ import { ROUTE_PATHS } from "../../../routes/index.enum";
         </form>
         <div className="flex justify-between mt-4 text-sm">
           <span>{t("Already have an account?")}</span>
-          <Link to={ROUTE_PATHS.AUTH_LOG_IN} className="text-red-500 hover:underline">
+          <Link to={"/"+ROUTE_PATHS.AUTH_LOG_IN} className="text-red-500 hover:underline">
             {t("Log In")}
           </Link>
         </div>

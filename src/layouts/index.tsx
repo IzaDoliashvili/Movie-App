@@ -10,14 +10,15 @@ const useLanguageNavigation = () => {
   const navigate = useNavigate();
   const selectedLang = localStorage.getItem("i18nextLng");
 
+
   React.useEffect(() => {
     if (selectedLang !== lang) {
       navigate(
-        `/${selectedLang}${location.pathname.replace(/(\/ka|\/en)/, "")}`,
+        `/${selectedLang}${location.pathname.replace(/(\/ka|\/en)/, "")}${location.search}`,
         { replace: true }
       );
     }
-  }, [selectedLang, location.pathname, lang, navigate]);
+  }, [selectedLang, location.pathname, location.search,lang, navigate]);
 };
 
 const DashboardLayout = () => {

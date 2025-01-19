@@ -60,7 +60,7 @@ const EditProfilePage = () => {
             type="submit"
             variant="destructive"
             size="default"
-            onClick={() => navigate(ROUTE_PATHS.USERS_PROFILE)}
+            onClick={() => navigate("/" + ROUTE_PATHS.USERS_PROFILE)}
            
           >
             {t("Save Changes")}
